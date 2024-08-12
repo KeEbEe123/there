@@ -24,7 +24,7 @@
   },
   "scripts": {
     "devStart": "nodemon --watch server.js --watch src --ext js,jsx,ts,tsx,css,scss,html --exec \"npm run build && node server.js\"",
-    "start": "node peerServer.js && node server.js",
+    "start": "concurrently \"node peerServer.js\" \"node server.js\"",
     "build": "react-scripts build",
     "initiate": "npm install && npm run build",
     "test": "react-scripts test",
