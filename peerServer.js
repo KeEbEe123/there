@@ -2,7 +2,7 @@ const { PeerServer } = require("peer");
 
 
 const options = {
-  port: process.env.PORT || 3001,
+  port: 443,
   proxied: true,
   path: "/myapp",
 };
