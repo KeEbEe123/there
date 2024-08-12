@@ -1,28 +1,22 @@
 const { PeerServer } = require("peer");
-const express = require("express");
-const http = require("http");
 
-// Create an Express app
-const app = express();
-const server = http.createServer(app);
 
-// Set up PeerJS server
-const peerServer = PeerServer({
-  port: process.env.PEER_PORT || process.env.PORT || 443, // Use the port provided by Render or a fallback port
+const options = {
+  port: 3001,
   proxied: true,
-  // Optionally, you can include SSL certificates here if needed
-});
+  path: "/myapp",
+};
 
-peerServer.on("connection", (client) => {
-  console.log("PeerJS client connected:", client.id);
-});
+try {
+  const peerServer = PeerServer(options);
 
-peerServer.on("disconnect", (client) => {
-  console.log("PeerJS client disconnected:", client.id);
-});
+  peerServer.on("connection", (client) => {
+    console.log("PeerJS client connected:", client.id);
+  });
 
-// Start the server
-const PORT = process.env.PORT || 443;
-server.listen(PORT, () => {
-  console.log(`PeerJS server is running on port ${PORT}`);
-});
+  peerServer.on("disconnect", (client) => {
+    console.log("PeerJS client disconnected:", client.id);
+  });
+} catch (error) {
+  console.error("Error starting PeerJS server:", error);
+}
