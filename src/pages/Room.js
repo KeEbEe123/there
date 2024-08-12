@@ -31,10 +31,11 @@ const Room = () => {
   useEffect(() => {
     console.log(enteredUsername);
     if (enteredUsername) {
-      socket.current = io("http://localhost:3000");
+      socket.current = io("https://there-b56t.onrender.com/");
       myPeer.current = new Peer(undefined, {
-        host: "/",
-        port: "3001",
+        host: "https://there-b56t.onrender.com/",
+        port: "443",
+        secure: true
       });
 
       navigator.mediaDevices
@@ -187,7 +188,9 @@ const Room = () => {
     navigator.mediaDevices
       .getDisplayMedia({ video: true, audio: true })
       .then((screenStream) => {
-        screenPeer.current = new Peer(undefined, { host: "/", port: "3001" });
+        screenPeer.current = new Peer(undefined, { host: "https://there-b56t.onrender.com/",
+        port: "443",
+        secure: true });
         screenStreamRef.current = screenStream;
 
         screenPeer.current.on("open", (id) => {
