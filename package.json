@@ -24,7 +24,7 @@
   "scripts": {
     "devStart": "nodemon --watch server.js --watch src --ext js,jsx,ts,tsx,css,scss,html --exec \"npm run build && node server.js\"",
     "start": "react-scripts start",
-    "build": "npm install && npm run build && node server",
+    "build": "npm install && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
