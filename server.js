@@ -5,6 +5,7 @@ const server = http.createServer(app);
 const { v4: uuidV4 } = require("uuid");
 const path = require("path");
 const io = require("socket.io")(server);
+const port = process.env.PORT || 4000;
 
 const buildPath = path.join(__dirname, "build");
 
@@ -25,8 +26,8 @@ app.get("/:room", (req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
-server.listen(3000, () => {
-  console.log("Server is running on port 3000");
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 let positions = {};
