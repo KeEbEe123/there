@@ -10,6 +10,9 @@ const buildPath = path.join(__dirname, "build");
 
 app.use(express.static(buildPath));
 console.log(buildPath);
+app.get("/", (req, res) => {
+  res.sendFile(buildPath + "/index.html");
+});
 
 app.get("/getRoom", (req, res) => {
   const newRoomId = uuidV4();
