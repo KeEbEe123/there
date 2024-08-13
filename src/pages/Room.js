@@ -34,7 +34,7 @@ const Room = () => {
       socket.current = io("https://there-1.onrender.com/");
       myPeer.current = new Peer(undefined, {
         host: "https://there-1.onrender.com/",
-        port: "443",
+        port: "3001",
         secure: true,
         path: "/myapp"
       });
@@ -190,7 +190,7 @@ const Room = () => {
       .getDisplayMedia({ video: true, audio: true })
       .then((screenStream) => {
         screenPeer.current = new Peer(undefined, { host: "https://there-1.onrender.com/",
-        port: "443",
+        port: "3001",
         secure: true, path: "/myapp" });
         screenStreamRef.current = screenStream;
 
