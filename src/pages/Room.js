@@ -33,10 +33,7 @@ const Room = () => {
     if (enteredUsername) {
       socket.current = io("https://there-1.onrender.com/");
       myPeer.current = new Peer(undefined, {
-        host: "https://there-1.onrender.com/",
-        port: "443",
-        secure: true,
-        path: "/myapp"
+        host:'peerjs-server.herokuapp.com', secure:true, port:443
       });
 
       navigator.mediaDevices
@@ -189,9 +186,7 @@ const Room = () => {
     navigator.mediaDevices
       .getDisplayMedia({ video: true, audio: true })
       .then((screenStream) => {
-        screenPeer.current = new Peer(undefined, { host: "https://there-1.onrender.com/",
-        port: "443",
-        secure: true, path: "/myapp" });
+        screenPeer.current = new Peer(undefined, { host:'peerjs-server.herokuapp.com', secure:true, port:443});
         screenStreamRef.current = screenStream;
 
         screenPeer.current.on("open", (id) => {
