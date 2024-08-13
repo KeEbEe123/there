@@ -23,6 +23,10 @@ app.get("/getRoom", (req, res) => {
 
 app.get("/:room", (req, res) => {
   console.log("Serving room:", req.params.room);
+  const roomId = req.params.room;
+
+  // Skip routing if it's the peer server path
+  if (roomId === 'myapp') return next();
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
