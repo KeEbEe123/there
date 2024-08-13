@@ -276,6 +276,7 @@ const Room = () => {
                   onSizeChange={handleSizeChange} // Handle size change
                   isScreen={user.isScreen} // Pass screen sharing flag
                   screenShareStream={screenStream}
+                  localUserId={myPeer.current.id}
                 />
               ))}
             </div>
