@@ -116,6 +116,7 @@ const Video = ({
   useEffect(() => {
     if (videoRef.current && stream) {
       videoRef.current.srcObject = stream;
+      videoRef.current.muted = false;
       videoRef.current.play();
     }
   }, [stream]);
