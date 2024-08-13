@@ -7,8 +7,8 @@ export const useMedia = () => {
 };
 
 export const MediaProvider = ({ children }) => {
-  const [webcamOn, setWebcamOn] = useState(true);
-  const [audioOn, setAudioOn] = useState(true);
+  const [webcamOn, setWebcamOn] = useState(false);
+  const [audioOn, setAudioOn] = useState(false);
 
   const toggleWebcam = () => {
     setWebcamOn((prevState) => !prevState);
