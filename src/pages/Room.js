@@ -32,12 +32,12 @@ const Room = () => {
     console.log(enteredUsername);
     if (enteredUsername) {
       socket.current = io("https://there-1.onrender.com/");
-      myPeer.current = new Peer(undefined, {
-        host: '0.peerjs.com',
+      myPeer.current = new Peer(`peer_${Math.random().toString(36).substring(7)}`, {
+  host: '0.peerjs.com',
   secure: true,
   port: 443,
   path: '/'
-      });
+});
 
       navigator.mediaDevices
         .getUserMedia({
