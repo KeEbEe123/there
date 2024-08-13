@@ -9,6 +9,7 @@ const Video = ({
   onSizeChange,
   isScreen,
   screenShareStream,
+  localUserId
 }) => {
   const [position, setPosition] = useState(initialPosition);
   const [size, setSize] = useState(initialSize);
@@ -116,10 +117,10 @@ const Video = ({
   useEffect(() => {
     if (videoRef.current && stream) {
       videoRef.current.srcObject = stream;
-      videoRef.current.muted = false;
+      videoRef.current.muted = userId === localUserId;
       videoRef.current.play();
     }
-  }, [stream]);
+  }, [stream, userId, localUserId]);
 
   useEffect(() => {
     if (screenShareRef.current && screenShareStream) {
@@ -146,7 +147,6 @@ const Video = ({
             ? `w-full h-full object-cover rounded-full`
             : `w-full h-full object-contain -z-12`
         }
-        muted={!isScreen}
       />
 
       <div
