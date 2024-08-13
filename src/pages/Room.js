@@ -36,7 +36,7 @@ const Room = () => {
         host: "https://there-1.onrender.com/",
         port: "443",
         secure: true,
-        path: "/myapp"
+        path: "/getRoom"
       });
 
       navigator.mediaDevices
@@ -191,7 +191,7 @@ const Room = () => {
       .then((screenStream) => {
         screenPeer.current = new Peer(undefined, { host: "https://there-1.onrender.com/",
         port: "443",
-        secure: true, path: "/myapp" });
+        secure: true, path: "/getRoom" });
         screenStreamRef.current = screenStream;
 
         screenPeer.current.on("open", (id) => {
