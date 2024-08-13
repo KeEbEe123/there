@@ -66,13 +66,13 @@ const Video = ({
     (e) => {
       if (resizing) {
         const temp = size.width + (e.clientX - offset.x);
-        if (temp < 300 && temp > 150 && !isScreen) {
+        if (temp < 300 && temp > 100 && !isScreen) {
           const newSize = {
             width: size.width + (e.clientX - offset.x),
             height: size.height + (e.clientY - offset.y),
           };
           setSize(newSize);
-          onSizeChange(userId, newSize);
+          onSizeChange(userId, newSize); // Emit size change
           setOffset({ x: e.clientX, y: e.clientY });
         } else {
           const newSize = {
@@ -80,7 +80,7 @@ const Video = ({
             height: size.height + (e.clientY - offset.y),
           };
           setSize(newSize);
-          onSizeChange(userId, newSize);
+          onSizeChange(userId, newSize); // Emit size change
           setOffset({ x: e.clientX, y: e.clientY });
         }
       }
