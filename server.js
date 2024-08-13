@@ -26,7 +26,9 @@ app.get("/:room", (req, res) => {
   const roomId = req.params.room;
 
   // Skip routing if it's the peer server path
-  if (roomId === 'myapp') return next();
+  if (roomId === 'myapp') {
+    return res.status(404).send('Not found'); // Or handle it as needed
+  }
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
