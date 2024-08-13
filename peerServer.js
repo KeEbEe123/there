@@ -1,5 +1,5 @@
 const { PeerServer } = require("peer");
-const port = process.env.PEER_PORT || 3001;
+const port = process.env.PEER_PORT || 443;
 
 const options = {
   port: port,
