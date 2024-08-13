@@ -267,11 +267,7 @@ const Room = () => {
                   userId={user.id}
                   roomId={room}
                   initialPosition={positions[user.id] || { x: 0, y: 0 }} // Pass initial position
-                  initialSize={
-                    sizes[user.id] || !user.isScreen
-                      ? { width: 200, height: 200 }
-                      : { width: 640, height: 360 }
-                  } // Pass initial size
+                  initialSize={sizes[user.id] || { width: 200, height: 200 }} // Pass initial size
                   onPositionChange={handlePositionChange} // Handle position change
                   onSizeChange={handleSizeChange} // Handle size change
                   isScreen={user.isScreen} // Pass screen sharing flag
