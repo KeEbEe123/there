@@ -33,7 +33,7 @@ const Room = () => {
     if (enteredUsername) {
       socket.current = io("https://there-1.onrender.com/");
       myPeer.current = new Peer(undefined, {
-        host:'/', secure:true, port:443, path:'/myapp'
+        host:'/', secure:true, port:3001, path:'/myapp'
       });
 
       navigator.mediaDevices
@@ -186,7 +186,7 @@ const Room = () => {
     navigator.mediaDevices
       .getDisplayMedia({ video: true, audio: true })
       .then((screenStream) => {
-        screenPeer.current = new Peer(undefined, { host:'/', secure:true, port:443, path:'/myapp'});
+        screenPeer.current = new Peer(undefined, { host:'/', secure:true, port:3001, path:'/myapp'});
         screenStreamRef.current = screenStream;
 
         screenPeer.current.on("open", (id) => {
