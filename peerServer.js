@@ -4,7 +4,7 @@ const port = process.env.PEER_PORT || 443;
 const options = {
   port: port,
   proxied: true,
-  path: "/getRoom",
+  path: "/myapp",
 };
 
 try {
