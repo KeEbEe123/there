@@ -68,11 +68,11 @@ const Room = () => {
             );
           });
 
-          socket.current.on("existing-users", (existingUsers) => {
-      existingUsers.forEach((existingUserId) => {
-        connectToNewUser(existingUserId, myVideoStream.current);
-      });
-    });
+    //       socket.current.on("existing-users", (existingUsers) => {
+    //   existingUsers.forEach((existingUserId) => {
+    //     connectToNewUser(existingUserId, myVideoStream.current);
+    //   });
+    // });
 
           // Listen for initial positions and sizes
           socket.current.on("initialPositions", (positions) => {
