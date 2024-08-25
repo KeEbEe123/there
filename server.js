@@ -43,6 +43,8 @@ io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId) => {
     socket.join(roomId);
     socket.to(roomId).emit("user-connected", userId);
+    const existingUsers = Array.from(io.sockets.adapter.rooms.get(roomId) || []);
+    socket.emit("existing-users", existingUsers.filter(id => id !== socket.id));
 
     // Send initial positions and sizes
     socket.emit("initialPositions", positions[roomId] || {});
