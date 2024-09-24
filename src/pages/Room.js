@@ -9,19 +9,19 @@ import Chat from "../components/Chat";
 import { useMedia } from "../components/MediaContext";
 
 const Room = () => {
-  const { room } = useParams(); // Get the room ID from the URL parameters
-  const [users, setUsers] = useState([]); // State to manage connected users and their streams
-  const socket = useRef(); // UseRef to store the socket instance
-  const myPeer = useRef(); // UseRef to store the PeerJS instance
-  const myVideoStream = useRef(); // UseRef to store the local video stream
+  const { room } = useParams(); 
+  const [users, setUsers] = useState([]);
+  const socket = useRef(); 
+  const myPeer = useRef(); 
+  const myVideoStream = useRef(); 
   const { webcamOn, audioOn } = useMedia();
   const screenStreamRef = useRef();
   const screenPeer = useRef();
   const [stream, setStream] = useState(null);
   const [positions, setPositions] = useState({});
-  const [sizes, setSizes] = useState({}); // State to manage video sizes
+  const [sizes, setSizes] = useState({});
   const [screenShareActive, setScreenShareActive] = useState(false);
-  const [screenStream, setScreenStream] = useState(null); // Track if screen sharing is active
+  const [screenStream, setScreenStream] = useState(null);
   const [chatOpen, setChatOpen] = useState(false);
   const [username, setUsername] = useState("");
   const [enteredUsername, setEnteredUsername] = useState(false);
@@ -47,7 +47,7 @@ const Room = () => {
         .then((stream) => {
           setStream(stream);
           myVideoStream.current = stream;
-          addVideoStream(myPeer.current.id, stream); // Use PeerJS ID for the local user
+          addVideoStream(myPeer.current.id, stream); 
 
           myPeer.current.on("call", (call) => {
             call.answer(stream);
@@ -96,7 +96,7 @@ const Room = () => {
               [userId]: size,
             }));
           });
-          // Listen for position and size changes
+        
           socket.current.on("receive-message", (message) => {
             setMessages((prevMessages) => [...prevMessages, message]);
           });
@@ -104,9 +104,9 @@ const Room = () => {
           socket.current.on("background-changed", (imageUrl) => {
             setBackground(imageUrl);
           });
-          // Handle screen sharing
+          
           socket.current.on("user-screen-share-started", ({ userId }) => {
-            // Create a new PeerJS call to receive the screen stream
+           
             const call = myPeer.current.call(userId, stream);
             call.on("stream", (screenStream) => {
               addVideoStream(userId, screenStream, true);
@@ -156,7 +156,7 @@ const Room = () => {
   };
 
   const handleBackgroundChange = (imageUrl) => {
-    // Emit the background change event to the server
+   
     console.log(imageUrl);
     socket.current.emit("change-background", imageUrl);
   };
@@ -164,7 +164,7 @@ const Room = () => {
   const addVideoStream = (id, stream, isScreen = false) => {
     setUsers((prevUsers) => {
       if (prevUsers.some((user) => user.id === id)) {
-        return prevUsers; // Prevent adding the same user stream again
+        return prevUsers;
       }
       return [...prevUsers, { id, stream, isScreen }];
     });
